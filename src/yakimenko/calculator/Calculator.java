@@ -30,8 +30,12 @@ public class Calculator {
 		Calculator.nullVector(arg1);
 		Calculator.nullVector(arg2);
 		
-		System.out.println("Press \"Q\" to exit\nInput command:");
+		System.out.println("Press \"Q\" to exit\n" +
+							"Usage example: arg1[+|-|*|/|g]arg2= , where " +
+							"capacity of args does not exceed of entered range\n" +
+							"Input command:");
 		String command = in.next();
+		try {
 		while ((symb = command.charAt(pos++)) != 'Q') {
 			if ((symb == '+')||(symb == '-')||(symb == '/')||(symb == '*')||(symb == 'g'))
 				if(operationIsEntered == 0){
@@ -96,6 +100,11 @@ public class Calculator {
 			command = in.next();
 			pos=0;
 		}
-		System.out.print("Exit. Bye!");
+		}
+		catch (IndexOutOfBoundsException e) {
+			System.out.println("Wrong input command!\nUsage example: arg1[+|-|*|/|g]arg2= , where " +
+					"capacity of args does not exceed of entered range");
+		}
+		System.out.println("Exit. Bye!");
 	}
 }
